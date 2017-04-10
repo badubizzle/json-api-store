@@ -118,6 +118,8 @@ export default class Store {
 
     this._adapter = adapter;
     this._data = {};
+    this._meta = {};
+    this._links = {};
     this._subject = new Rx.Subject();
     this._subscriptions = {};
     this._types = {};
