@@ -525,6 +525,8 @@ export default class Store {
                             http://jsonapi.org/format/#document-top-level
    */
   push(root) {
+    this._meta = root.meta;
+    this._links = root.links;
     if (root.data.constructor === Array) {
       root.data.forEach(x => this.add(x));
     } else {
