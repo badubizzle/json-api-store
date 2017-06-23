@@ -12,14 +12,19 @@ export default class AjaxAdapter {
       throw new Error(`Unknown type '${type}'`);
     }
 
+    var option_headers = options.headers;
+              if (!option_headers){
+                  option_headers = { "Content-Type": "application/vnd.api+json" }
+              }else{
+                  option_headers["Content-Type"] = "application/vnd.api+json";
+              }
+
     let source = ajax({
       body: JSON.stringify({
         data: store.convert(type, partial)
       }),
       crossDomain: true,
-      headers: {
-        "Content-Type": "application/vnd.api+json"
-      },
+      headers: option_headers,// {"Content-Type": "application/vnd.api+json"},
       method: "POST",
       responseType: "auto",
       url: this._getUrl(type, null, options)
@@ -39,11 +44,16 @@ export default class AjaxAdapter {
       throw new Error(`Unknown type '${type}'`);
     }
 
+    var option_headers = options.headers;
+              if (!option_headers){
+                  option_headers = { "Content-Type": "application/vnd.api+json" }
+              }else{
+                  option_headers["Content-Type"] = "application/vnd.api+json";
+              }
+
     let source = ajax({
       crossDomain: true,
-      headers: {
-        "Content-Type": "application/vnd.api+json"
-      },
+      headers: option_headers, //{"Content-Type": "application/vnd.api+json"},
       method: "DELETE",
       responseType: "auto",
       url: this._getUrl(type, id, options)
@@ -66,11 +76,15 @@ export default class AjaxAdapter {
       throw new Error(`Unknown type '${type}'`);
     }
 
+    var option_headers = options.headers;
+              if (!option_headers){
+                  option_headers = { "Content-Type": "application/vnd.api+json" }
+              }else{
+                  option_headers["Content-Type"] = "application/vnd.api+json";
+              }
     let source = ajax({
       crossDomain: true,
-      headers: {
-        "Content-Type": "application/vnd.api+json"
-      },
+      headers: option_headers,// {"Content-Type": "application/vnd.api+json"},
       method: "GET",
       responseType: "auto",
       url: this._getUrl(type, id, options)
@@ -94,14 +108,19 @@ export default class AjaxAdapter {
 
     let data = store.convert(type, id, partial);
 
+    var option_headers = options.headers;
+              if (!option_headers){
+                  option_headers = { "Content-Type": "application/vnd.api+json" }
+              }else{
+                  option_headers["Content-Type"] = "application/vnd.api+json";
+              }
+
     let source = ajax({
       body: JSON.stringify({
         data: data
       }),
       crossDomain: true,
-      headers: {
-        "Content-Type": "application/vnd.api+json"
-      },
+      headers: option_headers, //{"Content-Type": "application/vnd.api+json"},
       method: "PATCH",
       responseType: "auto",
       url: this._getUrl(type, id, options)

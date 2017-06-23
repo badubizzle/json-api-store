@@ -29,14 +29,18 @@ var AjaxAdapter = (function () {
         throw new Error("Unknown type '" + type + "'");
       }
 
+      var option_headers = options.headers;
+                    if (!option_headers){
+                        option_headers = { "Content-Type": "application/vnd.api+json" }
+                    }else{
+                        option_headers["Content-Type"] = "application/vnd.api+json";
+                    }
       var source = (0, _ajax2["default"])({
         body: JSON.stringify({
           data: store.convert(type, partial)
         }),
         crossDomain: true,
-        headers: {
-          "Content-Type": "application/vnd.api+json"
-        },
+        headers: option_headers,// {"Content-Type": "application/vnd.api+json"},
         method: "POST",
         responseType: "auto",
         url: this._getUrl(type, null, options)
@@ -58,11 +62,15 @@ var AjaxAdapter = (function () {
         throw new Error("Unknown type '" + type + "'");
       }
 
+      var option_headers = options.headers;
+                    if (!option_headers){
+                        option_headers = { "Content-Type": "application/vnd.api+json" }
+                    }else{
+                        option_headers["Content-Type"] = "application/vnd.api+json";
+                    }
       var source = (0, _ajax2["default"])({
         crossDomain: true,
-        headers: {
-          "Content-Type": "application/vnd.api+json"
-        },
+        headers: option_headers,// {"Content-Type": "application/vnd.api+json"},
         method: "DELETE",
         responseType: "auto",
         url: this._getUrl(type, id, options)
@@ -86,11 +94,16 @@ var AjaxAdapter = (function () {
         throw new Error("Unknown type '" + type + "'");
       }
 
+      var option_headers = options.headers;
+              if (!option_headers){
+                  option_headers = { "Content-Type": "application/vnd.api+json" }
+              }else{
+                  option_headers["Content-Type"] = "application/vnd.api+json";
+              }
+
       var source = (0, _ajax2["default"])({
         crossDomain: true,
-        headers: {
-          "Content-Type": "application/vnd.api+json"
-        },
+        headers: option_headers,// {"Content-Type": "application/vnd.api+json"},
         method: "GET",
         responseType: "auto",
         url: this._getUrl(type, id, options)
@@ -114,14 +127,18 @@ var AjaxAdapter = (function () {
 
       var data = store.convert(type, id, partial);
 
+      var option_headers = options.headers;
+                    if (!option_headers){
+                        option_headers = { "Content-Type": "application/vnd.api+json" }
+                    }else{
+                        option_headers["Content-Type"] = "application/vnd.api+json";
+                    }
       var source = (0, _ajax2["default"])({
         body: JSON.stringify({
           data: data
         }),
         crossDomain: true,
-        headers: {
-          "Content-Type": "application/vnd.api+json"
-        },
+        headers: option_headers,// {"Content-Type": "application/vnd.api+json"},
         method: "PATCH",
         responseType: "auto",
         url: this._getUrl(type, id, options)
